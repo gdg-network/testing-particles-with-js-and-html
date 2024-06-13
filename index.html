@@ -10,7 +10,7 @@
             height: 60px;
             background-color: #fff;
             border-radius: 50px;
-            position: relative;
+            position: absolute;
         }
 
         /* Position the cloud */
@@ -63,7 +63,21 @@
         }
 
         // Create raindrops periodically
-        setInterval(createRaindrop, 50); // Faster rain!
+        setInterval(createRaindrop, 20); // Faster rain!
+
+        // Move the clouds
+        const clouds = document.querySelectorAll('.cloud');
+        let cloudPosition = 0;
+
+        function moveClouds() {
+            cloudPosition += 1;
+            clouds.forEach(cloud => {
+                cloud.style.transform = `translateX(${cloudPosition}px)`;
+            });
+            requestAnimationFrame(moveClouds);
+        }
+
+        moveClouds();
     </script>
 </body>
 </html>
