@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>particles.js</title>
-    <!-- Import style.css from root directory -->
-    <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Realistic Rain</title>
+    <style>
+        /* Add raindrop styling */
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background-color: #00f; /* Blue color for raindrops */
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        /* Keyframes for raindrop animation */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Particles.js div -->
-    <div id="particles-js">
-        <div class="heading">
-            <h1>particles!!!! enjoy</h1>
-        </div>
-    </div>
+    <!-- Create a rain container -->
+    <div class="rain-container"></div>
 
-    <!-- Import Particles.js and app.js files -->
-    <script src="./particles.js"></script>
-    <script src="./app.js"></script>
+    <!-- Add JavaScript to dynamically create raindrops -->
+    <script>
+        const rainContainer = document.querySelector('.rain-container');
+
+        function createRaindrop() {
+            const raindrop = document.createElement('div');
+            raindrop.classList.add('raindrop');
+            raindrop.style.left = `${Math.random() * 100}%`;
+            rainContainer.appendChild(raindrop);
+        }
+
+        // Create raindrops at intervals
+        setInterval(createRaindrop, 100);
+    </script>
 </body>
 </html>
